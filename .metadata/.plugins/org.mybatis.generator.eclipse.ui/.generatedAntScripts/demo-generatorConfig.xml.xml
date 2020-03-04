@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project default="generate">
+  <target name="generate">
+    <mybatis.generate configfile="D:\Github\SpringMVC_Mybatis\demo\generatorConfig.xml" />
+  </target>
+</project>

@@ -1,0 +1,63 @@
+package com.example.demo.Setting;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//	
+//	@Bean
+//	public AuthenticationProvider authProvider() {
+//		
+//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//		provider.setUserDetailsService(userDetailsService);
+//		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+//		
+//		return provider;
+//	}
+	
+    /**
+     *_ 靜態資源訪問設定
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+	       .ignoring().antMatchers("/vendor/**")
+	       .and()
+           .ignoring().antMatchers("/css/**")
+           .and()
+           .ignoring().antMatchers("/js/**")
+           .and()
+           .ignoring().antMatchers("/images/**")
+           .and()
+           .ignoring().antMatchers("/favicon.ico");
+    }
+	
+	
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		
+		httpSecurity
+			.csrf().disable()
+			.authorizeRequests()		
+			.antMatchers("/authenticate","/login","/doLogin","/logout","/login-error","/Chat","/Order/test")
+			.permitAll()  
+			.anyRequest().authenticated()
+			.and()
+			.oauth2Login();
+	}
+	
+}

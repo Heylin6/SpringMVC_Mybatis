@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Dao.orderMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="memo" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memo
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.Model.order">
+    insert into order (orderid, createuser, createtime, 
+      status, memo)
+    values (#{orderid,jdbcType=BIGINT}, #{createuser,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.Model.order">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="memo" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memo
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.Model.order">
+    insert into order (orderid, createuser, createtime, 
+      status, memo)
+    values (#{orderid,jdbcType=BIGINT}, #{createuser,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.Model.order">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.Model.order">
+    <constructor>
+      <arg column="orderid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="createuser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="createtime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="memo" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Blob_Column_List">
+    memo
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.Model.order">
+    insert into order (orderid, createuser, createtime, 
+      status, memo)
+    values (#{orderid,jdbcType=BIGINT}, #{createuser,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.Model.order">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

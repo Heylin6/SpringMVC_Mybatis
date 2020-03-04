@@ -1,0 +1,22 @@
+package com.example.demo.Controller;
+
+import java.security.Principal;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+@Controller
+public class MemberController {
+	
+	public Principal user(Principal principal) {
+		
+		@GetMapping("/login")
+	    public String login(@ModelAttribute String member){
+
+	        return "login";
+	    }
+		
+		return principal;
+	}
+}
