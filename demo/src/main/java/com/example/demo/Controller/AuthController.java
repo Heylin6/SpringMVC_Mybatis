@@ -1,17 +1,34 @@
 package com.example.demo.Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class AuthController {			
 	
 	  @RequestMapping(value = "/facebookredir")
 	  public void facebookredirect(HttpServletResponse res) throws IOException {
@@ -24,7 +41,9 @@ public class AuthController {
 	  @RequestMapping(value = "/googleredir")
 	  public void googleredirect(HttpServletResponse res) throws IOException {
 	    
-		  //查看回傳的id有無在資料庫
+		  URL urlObtainToken = new URL(
+					"https://accounts.google.com/o/oauth2/token");
+		//查看回傳的id有無在資料庫
 		  //
 		  //假設 有 轉址登入後畫面		  
 	  }
@@ -32,6 +51,8 @@ public class AuthController {
 	  @RequestMapping(value = "/githubredir")
 	  public void githubredirect(HttpServletResponse res) throws IOException {
 	    
+
+		  
 		  //查看回傳的id有無在資料庫
 		  //
 		  //假設 有 轉址登入後畫面		  

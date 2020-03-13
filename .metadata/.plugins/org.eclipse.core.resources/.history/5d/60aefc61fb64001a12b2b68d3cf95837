@@ -1,0 +1,5 @@
+package com.example.demo.Security.User;
+
+public class OAuth2UserInfo {
+
+}

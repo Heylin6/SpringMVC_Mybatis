@@ -1,0 +1,5 @@
+package com.example.demo.Security.OAuth2.User;
+
+public class GithubOAuth2UserInfo {
+
+}
