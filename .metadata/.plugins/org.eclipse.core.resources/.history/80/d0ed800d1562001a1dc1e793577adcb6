@@ -1,0 +1,8 @@
+package com.example.demo.Setting;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OAuth2Config {
+
+}

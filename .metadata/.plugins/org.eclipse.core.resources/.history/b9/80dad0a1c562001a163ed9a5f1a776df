@@ -1,0 +1,17 @@
+package com.example.demo.Service;
+
+import org.springframework.ui.Model;
+
+@Service
+public class MemberService {
+
+	public Model PrepareLoginModel(Model model) {
+		
+		model.addAttribute("githubAuth", "aaa");
+		model.addAttribute("facebookAuth", "bbb");
+		model.addAttribute("googleAuth", "ccc");		
+		
+		return model;
+	}
+
+}

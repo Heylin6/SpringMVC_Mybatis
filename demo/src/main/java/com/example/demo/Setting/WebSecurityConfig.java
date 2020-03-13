@@ -1,39 +1,71 @@
 package com.example.demo.Setting;
 
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.Filter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.web.filter.CompositeFilter;
 
+import com.example.demo.Model.ClientResources;
 
+@EnableOAuth2Client
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-//	@Autowired
-//	private UserDetailsService userDetailsService;
-//	
-//	@Bean
-//	public AuthenticationProvider authProvider() {
-//		
-//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//		provider.setUserDetailsService(userDetailsService);
-//		provider.setPasswordEncoder(new BCryptPasswordEncoder());
-//		
-//		return provider;
-//	}
-	
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    /**
+     *_ 靜態資源訪問設定
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+	       .ignoring().antMatchers("/vendor/**")
+	       .and()
+           .ignoring().antMatchers("/css/**")
+           .and()
+           .ignoring().antMatchers("/js/**")
+           .and()
+           .ignoring().antMatchers("/img/**")
+           .and()
+           .ignoring().antMatchers("/favicon.ico");
+    }
 	
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity
-			.antMatcher("/**").authorizeRequests()				
-			.antMatchers("/").permitAll()  
-			.anyRequest().authenticated()
-			.and()
-			.oauth2Login();
+			.antMatcher("/**")
+			.authorizeRequests()				
+			.antMatchers("/login**","/auth/**").permitAll()  
+			.anyRequest().authenticated();
+//			.and()
+//			.oauth2Login();
+		
+		//super.configure(httpSecurity);
 	}
+	
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 	
 }

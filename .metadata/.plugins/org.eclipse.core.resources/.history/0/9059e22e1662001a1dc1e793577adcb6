@@ -1,0 +1,57 @@
+package com.example.demo.Setting;
+
+
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@EnableOAuth2Sso
+@Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//	
+//	@Bean
+//	public AuthenticationProvider authProvider() {
+//		
+//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//		provider.setUserDetailsService(userDetailsService);
+//		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+//		
+//		return provider;
+//	}
+	
+    /**
+     *_ 靜態資源訪問設定
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+	       .ignoring().antMatchers("/vendor/**")
+	       .and()
+           .ignoring().antMatchers("/css/**")
+           .and()
+           .ignoring().antMatchers("/js/**")
+           .and()
+           .ignoring().antMatchers("/images/**")
+           .and()
+           .ignoring().antMatchers("/favicon.ico");
+    }
+	
+	
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		
+		httpSecurity
+			.antMatcher("/**")
+			.authorizeRequests()				
+			.antMatchers("/login**").permitAll()  
+			.anyRequest().authenticated()
+			.and()
+			.oauth2Login();
+	}
+	
+}
