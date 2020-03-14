@@ -1,4 +1,6 @@
 
-demo/secret_data/google_client_sec.md
-demo/src/main/resources/application.properties
+demo/secret_data/
+*.properties
 .metadata/
+*.log
+.metadata/.plugins/
