@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthController {			
 	
+		//
 	  @RequestMapping(value = "/facebookredir")
 	  public void facebookredirect(HttpServletResponse res) throws IOException {
 	    
@@ -43,7 +44,10 @@ public class AuthController {
 	    
 		  URL urlObtainToken = new URL(
 					"https://accounts.google.com/o/oauth2/token");
-		//查看回傳的id有無在資料庫
+		  
+		  //http://blog.kenyang.net/2012/09/15/google-oauth-20-google-api
+		  //https://github.com/alan5196/Pencil/blob/master/src/nthu/cs/excelsior/model/GoogleOauth2callback.java
+		  //查看回傳的id有無在資料庫
 		  //
 		  //假設 有 轉址登入後畫面		  
 	  }

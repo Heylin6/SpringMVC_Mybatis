@@ -20,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.web.filter.CompositeFilter;
 
-import com.example.demo.Model.ClientResources;
 
 @EnableOAuth2Client
 @Configuration
