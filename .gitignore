@@ -1,6 +1,4 @@
 
 demo/secret_data/google_client_sec.md
-.metadata/.log
-.metadata/.log
-.metadata/.log
 demo/src/main/resources/application.properties
+.metadata/
