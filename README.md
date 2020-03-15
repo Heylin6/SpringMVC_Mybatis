@@ -4,6 +4,8 @@
 
 Oauth2_Mybatis
 
+https://howtodoinjava.com/spring-boot2/oauth2-auth-server/
+
 google 第三方登入
 
 http://blog.kenyang.net/2012/09/15/google-oauth-20-google-api
